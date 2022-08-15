@@ -4,6 +4,7 @@ module.exports = {
     appsecret: '8937aaf3ebfb46dc8694bfe2fc656fb3',
     templateId: 'sXhyW5ykd_CPnglc7kHxH_yDvyTe-flIc26j7PRlF7k',
     mineOpenId: 'ouOxQ51Sub6AEVxAyDfwolzegy2w',
+    laichenOpenId: 'ouOxQ57UJlCh27Z7szltCXayPmjQ',
     gaodeKey: '83ac465d391648e8bb819de9e484a243',
     xiAnCityCode: '610100',
     beijingCityCode: '110000',
