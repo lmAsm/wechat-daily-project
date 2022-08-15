@@ -16,7 +16,7 @@ app.use(auth())
 const cycle = setInterval(async function () {
     const h = moment().hour();
     const m = moment().minute();
-    if (h === 9 && m === 0) {
+    // if (h === 9 && m === 0) {
         console.log('开始发送消息')
         getToken()
             .then(async token => {
@@ -40,7 +40,7 @@ const cycle = setInterval(async function () {
                 console.log('sendMessage err==== ', err)
                 clearInterval(cycle)
             })
-    }
-}, 1000 * 60)
+    // }
+}, 1000 * 20)
 
 app.listen(3000, () => console.log('服务器启动成功...'))
