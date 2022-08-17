@@ -46,7 +46,11 @@ class Wechat {
             readFile('./accessToken.txt', (err, value) => {
                 if (!err) {
                     console.log('token读取成功~')
-                    resolve(JSON.parse(value))
+                    try {
+                        resolve(JSON.parse(value))
+                    } catch (e) {
+                        resolve('')
+                    }
                 } else {
                     reject('token读取失败~')
                 }

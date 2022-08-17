@@ -27,7 +27,8 @@ function getLastDayOfMonth() {
 const cycle = setInterval(async function () {
     const h = moment().hour();
     const m = moment().minute();
-    if (h === 9 && m === 0) {
+    console.log('setInterval====== ', h, m)
+    // if (h === 9 && m === 0) {
         console.log('开始发送消息')
         getToken()
             .then(async token => {
@@ -43,16 +44,16 @@ const cycle = setInterval(async function () {
                 sendDailyMsg(token.access_token, mineOpenId, wageDate, weather)
 
                 // 给lc发
-                const leftDays = getLastDayOfMonth()
-                const xianWeather = await getWeather(xiAnCityCode)
-                sendDailyMsg(token.access_token, laichenOpenId, leftDays, xianWeather)
+                // const leftDays = getLastDayOfMonth()
+                // const xianWeather = await getWeather(xiAnCityCode)
+                // sendDailyMsg(token.access_token, laichenOpenId, leftDays, xianWeather)
 
             })
             .catch(err => {
                 console.log('sendMessage err==== ', err)
                 clearInterval(cycle)
             })
-    }
+    // }
 }, 1000 * 60)
 
 app.listen(3000, () => console.log('服务器启动成功...'))
