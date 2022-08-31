@@ -2,7 +2,7 @@
 const { parseString } = require('xml2js')
 const axios = require('axios')
 const moment = require('moment')
-const { templateId, gaodeKey, xiAnCityCode} = require('../config')
+const { templateId, gaodeKey, list } = require('../config')
 
 module.exports = {
     // 接收用户发的消息 ，返回的格式时xml
@@ -47,8 +47,10 @@ module.exports = {
     },
 
     // 每日天气消息推送
-    sendDailyMsg (token, touser, wageDate, weatherinfo) {
+    sendDailyMsg (token, touser, wageDate, weatherinfo, birthday) {
         const week = ['日', '一', '二', '三', '四', '五', '六']
+        const index = Math.floor(Math.random() * list.length)
+        console.log('list====== ', index, list[index])
         axios.post('https://api.weixin.qq.com/cgi-bin/message/template/send?access_token=' + token, {
             touser: touser,
             template_id: templateId, // 模板信息id
@@ -66,9 +68,17 @@ module.exports = {
                     value: '发工资',
                     color: '#ed4014'
                 },
+                BirthDayInfo: {
+                    value: '生日',
+                    color: '#ed4014'
+                },
                 WageDate: {
                     value: wageDate,
                     color: '#ed4014'
+                },
+                BirthDay: {
+                    value: birthday,
+                    color: '#ed4014',
                 },
                 Weather: {
                     value: weatherinfo.dayweather,
@@ -76,12 +86,15 @@ module.exports = {
                 },
                 TemperatureLow: {
                     value: weatherinfo.nighttemp + '℃',
-                    value: 12 + '℃',
                     color: '#19be6b'
                 },
                 TemperatureHigh: {
                     value: weatherinfo.daytemp + '℃',
                     color: '#2d8cf0',
+                },
+                Sentence: {
+                    value: list[index],
+                    color: '#c84ecc'
                 }
             }
         })
