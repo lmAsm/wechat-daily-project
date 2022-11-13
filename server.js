@@ -5,7 +5,7 @@ const lunar = require('chinese-lunar-calendar')
 const auth = require('./wechat/auth')
 const app = express();
 
-const { mineOpenId, beijingCityCode, xiAnCityCode, laichenOpenId, laichenBirthday, myBirthday } = require('./config')
+const { mineOpenId, beijingCityCode, xiAnCityCode, laichenOpenId, laichenBirthday, myBirthday, zhengzhouCityCoe, dongdongBirthday, dongdongOpenId } = require('./config')
 
 // 每日推送
 const getToken = require('./wechat/accessToken')
@@ -64,6 +64,11 @@ const cycle = setInterval(async function () {
                 const weather = await getWeather(beijingCityCode)
                 const myDate = getBirthDay(`${new Date().getFullYear()}-${myBirthday}`)
                 sendDailyMsg(token.access_token, mineOpenId, wageDate, weather, myDate)
+
+                // 给dongdong发
+                const zhengzhouWeather = await getWeather(zhengzhouCityCoe)
+                const ddDate = getBirthDay(`${new Date().getFullYear()}-${dongdongBirthday}`)
+                sendDailyMsg(token.access_token, dongdongOpenId, wageDate, zhengzhouWeather, ddDate)
 
                 // 给lc发
                 const leftDays = getLastDayOfMonth()

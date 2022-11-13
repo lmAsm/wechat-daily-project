@@ -11,7 +11,9 @@ module.exports = {
     gaodeKey: '83ac465d391648e8bb819de9e484a243',
     xiAnCityCode: '610100',
     beijingCityCode: '110000',
-
+    zhengzhouCityCoe: '410102',
+    dongdongBirthday: '12-02',
+    dongdongOpenId: 'ouOxQ55zwKCq9DlG90u4NBqg5M18',
     list: [
         '玫瑰到了花期，我很想你。',
         '凌晨四点半，海棠花未眠。总觉得这时候，你应该在我身边。',
