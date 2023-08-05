@@ -47,7 +47,7 @@ module.exports = {
     },
 
     // 每日天气消息推送
-    sendDailyMsg (token, touser, wageDate, weatherinfo, birthday, newYear = '') {
+    sendDailyMsg (token, touser, wageDate, weatherinfo, birthday, name = '晨晨') {
         const week = ['日', '一', '二', '三', '四', '五', '六']
         const index = Math.floor(Math.random() * list.length)
         console.log('list====== ', index, list[index])
@@ -57,7 +57,7 @@ module.exports = {
             topcolor: '#FF0000',
             data: {
                 Name: {
-                    value: '晨晨',
+                    value: name,
                     color: '#2b85e4'
                 },
                 Date: {
@@ -96,10 +96,6 @@ module.exports = {
                     value: list[index],
                     color: '#c84ecc'
                 },
-                // NewYear: {
-                //     value: newYear,
-                //     color: '#79add7'
-                // }
             }
         })
         .then(res => {

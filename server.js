@@ -63,18 +63,13 @@ const cycle = setInterval(async function () {
                 // 给自己发
                 const weather = await getWeather(beijingCityCode)
                 const myDate = getBirthDay(`${new Date().getFullYear()}-${myBirthday}`)
-                sendDailyMsg(token.access_token, mineOpenId, wageDate, weather, myDate)
-
-                // 给dongdong发
-                const zhengzhouWeather = await getWeather(zhengzhouCityCoe)
-                const ddDate = getBirthDay(`${new Date().getFullYear()}-${dongdongBirthday}`)
-                sendDailyMsg(token.access_token, dongdongOpenId, wageDate, zhengzhouWeather, ddDate)
+                sendDailyMsg(token.access_token, mineOpenId, wageDate, weather, myDate, '阿猛')
 
                 // 给lc发
                 const leftDays = getLastDayOfMonth()
                 const xianWeather = await getWeather(xiAnCityCode)
                 const lcDate = getBirthDay(`${new Date().getFullYear()}-${laichenBirthday}`)
-                sendDailyMsg(token.access_token, laichenOpenId, leftDays, xianWeather, lcDate)
+                sendDailyMsg(token.access_token, laichenOpenId, leftDays, xianWeather, lcDate, '晨晨')
 
             })
             .catch(err => {
